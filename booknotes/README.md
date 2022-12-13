@@ -1,7 +1,7 @@
 # BOOKNOTES
 
 ### **Description:**
- Booknotes is a note-taking web app, specifically designed to take book reading notes.
+ Booknotes is a note-taking web app, specifically designed to take book notes.
 
 ### **Technologies used:**
 
