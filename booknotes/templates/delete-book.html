@@ -1,0 +1,25 @@
+<!-- This page gets called from application.py when the user wants to delete a book that they are currently reading  -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    Delete Book
+{% endblock %}
+{% block body %}
+<main>
+    <h1 class="main-header">Delete Book</h1>
+    <!-- Form for the user to choose the book they want to delete -->
+    <div class="in-app-forms">
+        <form class="book-list" method="post" action="/delete-book">
+            <select required name="book" class="drop-down-menu option-maxwidth">
+                <option value="" disabled selected hidden>Select a book</option>
+                <!-- Get and display the user's completed books (sent from application.py, "/delete-book.html" route) -->
+                {% for book in books %}
+                <option value="{{ book.book_title }}">{{ book.book_title }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <button type="submit" class="in-app-button" id="view-button">Delete book</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

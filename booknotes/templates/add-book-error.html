@@ -1,0 +1,32 @@
+<!-- This page gets called from application.py when the user tries to add a book to their want-to-read list, but received an error -->
+<!-- The page is the same as add-book.html, except that it contains a custom error message -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    Add Book Error
+{% endblock %}
+{% block body %}
+<main>
+    <!-- BOOTSTRAP error alert -->
+    <div class="alert alert-danger" role="alert">
+        <!-- Get and display the error message (sent from application.py, "/add-book" route) -->
+        {{ error_message }}
+        <!-- Link to offer the user re-direction -->
+        <a class="alert-error-link" href="{{ link }}">{{ linked_text }}</a>
+        <!-- For error messages that have a link (as per above), this provides a space to continue the error message after the link -->
+        {{ error_message_cont }}
+    </div>
+    <h1 class="main-header">Add Book to Reading List</h1>
+    <h2 class="sub-header">Book title</h2>
+    <div class="in-app-forms">
+        <!-- Form to add a new book -->
+        <form action="/add-book" method="post">
+            <div class="input-border">
+                <input class="in-app-input-fields" autocomplete="off" autofocus placeholder="Enter book title" type="text" name="addbookreadinglist">
+            </div>
+            <br>
+            <button type="submit" class="in-app-button new-book-button">Add book</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

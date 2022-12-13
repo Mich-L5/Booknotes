@@ -1,0 +1,57 @@
+<!-- This page is the home page and gets called from application.py when the user first logs into the application, or when the header logo button is clicked -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    Home
+{% endblock %}
+{% block body %}
+<main>
+    <div class="container">
+        <!-- Large circle button 1/4 (new book) -->
+        <div class="icon-container">
+            <a class="link-container" href="/new-book">
+                <div>
+                    <img src="{{url_for('static', filename='new_book.png')}}" alt="New Book icon" class="icon">
+                </div>
+            </a>
+            <div class="title-container">
+                <div class="icon-title">New Book</div>
+            </div>
+        </div>
+        <!-- Large circle button 2/4 (currently reading) -->
+        <div class="icon-container">
+            <a class="link-container" href="/currently-reading">
+                <div>
+                    <img src="{{url_for('static', filename='currently_reading.png')}}" alt="Currently Reading icon" class="icon">
+                </div>
+            </a>
+            <div class="title-container">
+                <div class="icon-title">Currently Reading</div>
+            </div>
+        </div>
+        <div class="linebreak"></div>
+        <!-- Large circle button 3/4 (completed) -->
+        <div class="icon-container">
+            <a class="link-container" href="/completed">
+                <div>
+                    <img src="{{url_for('static', filename='completed.png')}}" alt="Completed icon" class="icon">
+                </div>
+            </a>
+            <div class="title-container">
+                <div class="icon-title">Completed</div>
+            </div>
+        </div>
+        <!-- Large circle button 4/4 (want to read) -->
+        <div class="icon-container">
+            <a class="link-container" href="/want-to-read">
+                <div>
+                    <img src="{{url_for('static', filename='want_to_read.png')}}" alt="Want to Read icon" class="icon">
+                </div>
+            </a>
+            <div class="title-container">
+                <div class="icon-title">Want to Read</div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

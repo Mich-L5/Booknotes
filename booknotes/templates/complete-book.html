@@ -1,0 +1,25 @@
+<!-- This page gets called from application.py when the user wants to mark a book as completed -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    Complete Book
+{% endblock %}
+{% block body %}
+<main>
+    <h1 class="main-header">Complete Book</h1>
+    <div class="in-app-forms">
+        <!-- Form for user to select and submit the book they want to mark as complete -->
+        <form class="book-list" method="post" action="/complete-book">
+            <select required name="book" class="drop-down-menu option-maxwidth">
+                <option value="" disabled selected hidden>Select a book</option>
+                <!-- Get and display the user's current books (sent from application.py, "/complete-book" route) -->
+                {% for book in books %}
+                <option value="{{ book.book_title }}">{{ book.book_title }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <button type="submit" class="in-app-button" id="view-button">Complete book</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

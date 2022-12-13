@@ -1,0 +1,63 @@
+<!-- This page gets called from application.py when the user encounters a login error (i.e. invalid credentials, no existing account, etc.) -->
+<!-- The page is the same as login.html, except that it contains an error alert -->
+<!-- Extend layout template with Jinja -->
+{% extends "layout.html" %}
+{% block title %}
+    Log In Error
+{% endblock %}
+{% block body %}
+<!-- BOOTSTRAP theme template -->
+<main class="main-bootstrap">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form autocomplete="off" class="login100-form validate-form" method="post">
+                    <span class="login100-form-title p-b-43">
+                        <img src="{{url_for('static', filename='Booknotes_logo.png')}}" alt="Booknotes logo" id="logo">
+                        <br>
+                        Login to continue
+                    </span>
+                    <!-- Link that redirects to the registration page -->
+                    <span class="new_user">
+                        New user? <a href="/registration">Register here</a>
+                    </span>
+                    &nbsp;
+                    <!-- BOOTSTRAP error alert -->
+                    <div class="alert alert-danger" role="alert">
+                        <!-- Get and display the error message (sent from application.py, "/login" route) -->
+                        {{ error_message }}
+                        <!-- Link to offer the user re-direction -->
+                        <a class="alert-error-link" href="{{ link }}">{{ linked_text }}</a>
+                        <!-- For error messages that have a link (as per above), this provides a space to continue the error message after the link -->
+                        {{ error_message_cont }}
+                    </div>
+                    <!-- Username field -->
+                    <div class="wrap-input100">
+                        <input class="input100" name="username" type="text">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Username</span>
+                    </div>
+                    <!-- Password field -->
+                    <div class="wrap-input100">
+                        <input class="input100" name="password" type="password">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                    </div>
+                    <!-- Login button -->
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit">
+                            Login
+                        </button>
+                    </div>
+                    <!-- Demo user credentials -->
+                    <div class="demo-user-info">
+                        <p>Demo username: demo_user</p>
+                        <p>Demo password: 123</p>
+                    </div>
+                </form>
+                <div class="login100-more"></div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

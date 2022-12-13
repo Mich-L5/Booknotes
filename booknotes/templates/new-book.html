@@ -1,0 +1,22 @@
+<!-- This page gets called from application.py when the user wants to start a new book -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    New Book
+{% endblock %}
+{% block body %}
+<main>
+    <h1 class="main-header">New Book</h1>
+    <h2 class="sub-header">Book title</h2>
+    <div class="in-app-forms">
+        <!-- Form for user to add a new book -->
+        <form action="/new-book" method="post">
+            <div class="input-border">
+            <input class="in-app-input-fields" autocomplete="off" autofocus placeholder="Enter book title" type="text" name="addbook">
+            </div>
+            <br>
+            <button type="submit" class="in-app-button">Start new book</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

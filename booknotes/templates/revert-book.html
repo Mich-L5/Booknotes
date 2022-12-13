@@ -1,0 +1,25 @@
+<!-- This page gets called from application.py when the user wants to revert a book from completed to currently reading -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    Revert Book
+{% endblock %}
+{% block body %}
+<main>
+    <h1 class="main-header">Revert Book to Currently Reading</h1>
+    <!-- Form for user to select the book they want to revert -->
+    <div class="in-app-forms">
+        <form class="book-list" method="post" action="/revert-book">
+            <select required name="book" class="drop-down-menu option-maxwidth">
+                <option value="" disabled selected hidden>Select a book</option>
+                <!-- Get and display the user's completed books (sent from application.py, "/revert-book.html" route) -->
+                {% for book in books %}
+                <option value="{{ book.book_title }}">{{ book.book_title }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <button type="submit" class="in-app-button" id="view-button">Revert book</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

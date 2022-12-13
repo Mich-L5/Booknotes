@@ -1,0 +1,46 @@
+<!-- This page gets called from application.py when the user wants to see their want-to-read book list -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    Want to Read
+{% endblock %}
+{% block body %}
+<main>
+    <div class="grid-container">
+        <!-- Side menu -->
+        <div class="item1">
+            <ul>
+                <li class="sidebar-button"><a href="/add-book">Add book</a></li>
+                <li class="sidebar-button"><a href="/start-book">Start a book</a></li>
+                <li class="sidebar-button"><a href="/delete-book-reading-list">Delete a book</a></li>
+            </ul>
+        </div>
+        <!-- End side menu -->
+        <div class="item2">
+            <div class="header-container">
+                <!-- "+" circle button (to open the sidebar on mobile) code section 1/2 -->
+                <div class="sidebar-icon-circle" id="blank-sidebar-icon-circle"></div>
+                <h1 class="main-header">Want to Read Booklist</h1>
+                <!-- "+" circle button (to open the sidebar on mobile) code section 2/2 -->
+                <div class="sidebar-icon-circle" id="open">+</div>
+            </div>
+            <!-- Get and display the user's books on their want-to-read list (sent from application.py, "/want-to-read.html" route) -->
+            {% for book in books %}
+            <p class="want-to-read-booklist">{{ book.book_title }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Side menu (mobile devices) -->
+    <div class="modal-container" id="modal_container">
+    <div class="modal-popup">
+        <ul>
+            <li class="sidebar-button"><a href="/add-book">Add a book</a></li>
+            <li class="sidebar-button"><a href="/start-book">Start a book</a></li>
+            <li class="sidebar-button"><a href="/delete-book-reading-list">Delete a book</a></li>
+        </ul>
+        <button type="button" class="close-button" id="close">Close</button>
+    </div>
+    </div>
+    <!-- End side menu (mobile devices) -->
+</main>
+{% endblock %}

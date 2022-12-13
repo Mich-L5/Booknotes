@@ -1,0 +1,30 @@
+<!-- This page gets called from application.py when the user wants to add a new notes entry -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    Add Entry
+{% endblock %}
+{% block body %}
+<main>
+    <h1 class="main-header">Add Entry</h1>
+    <div class="in-app-forms">
+        <!-- Form to add notes entry -->
+        <form class="book-list" method="post" action="/add-entry">
+            <!-- Select menu containing the list of books the user is currently reading -->
+            <select required name="book" class="drop-down-menu option-maxwidth">
+                <option value="" disabled selected hidden>Select a book</option>
+                <!-- Get and display the current user's book list (sent from application.py, "/add-entry" route) -->
+                {% for book in books %}
+                <option value="{{ book.book_title }}">{{ book.book_title }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <div class="input-border">
+                <textarea rows="4" cols="50" class="in-app-input-fields-large" autocomplete="off" autofocus placeholder="Enter notes" name="addentry"></textarea>
+            </div>
+            <br>
+            <button type="submit" class="in-app-button" id="view-button">Add entry</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

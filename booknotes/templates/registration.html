@@ -1,0 +1,54 @@
+<!-- This page gets called from application.py when the user wants to register as a new user -->
+<!-- Extend layout template with Jinja -->
+{% extends "layout.html" %}
+{% block title %}
+    Registration
+{% endblock %}
+{% block body %}
+<!-- BOOTSTRAP theme template -->
+<main class="main-bootstrap">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form autocomplete="off" class="registration100-form validate-form" method="post">  <!--ERROR HERE?? REGISTRATION CLASS not in responsive section -->
+                    <span class="login100-form-title p-b-43">
+                        <img src="{{url_for('static', filename='Booknotes_logo.png')}}" alt="Booknotes logo" id="logo_registration">
+                        <br>
+                        Sign up to continue
+                    </span>
+                    <!-- Link that redirects to the login page -->
+                    <span class="new_user">
+                        Already a member? <a href="/login">Log in here</a>
+                    </span>
+                    &nbsp;
+                    <!-- Username field -->
+                    <div class="wrap-input100">
+                        <input class="input100" type="text" name="username">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Username</span>
+                    </div>
+                    <!-- Password field -->
+                    <div class="wrap-input100">
+                        <input class="input100" type="password" name="password">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                    </div>
+                    <!-- Password confirmation field -->
+                    <div class="wrap-input100">
+                        <input class="input100" type="password" name="confirmation">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Confirm password</span>
+                    </div>
+                    <!-- Register button -->
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit">
+                            Register
+                        </button>
+                    </div>
+                </form>
+                <div class="login100-more"></div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

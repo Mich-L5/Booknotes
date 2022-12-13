@@ -1,0 +1,24 @@
+<!-- This page gets called from application.py when the user starts a new book to enter their first notes entry -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    Add First Entry
+{% endblock %}
+{% block body %}
+<main>
+    <h1 class="main-header">Add Entry</h1>
+    <!-- Get and display the book title (sent from application.py, "/new-book" route) -->
+    <h2 class="sub-header">{{ book[0]["book_title"] }}</h2>
+    <h2 class="sub-header">Notes:</h2>
+    <div class="in-app-forms">
+        <!-- Form to add notes entry -->
+        <form action="/add-first-entry" method="post">
+            <div class="input-border">
+                <textarea rows="4" cols="50" class="in-app-input-fields-large" autocomplete="off" autofocus placeholder="Enter notes" name="addfirstentry"></textarea>
+            </div>
+            <br>
+            <button type="submit" class="in-app-button" id="add-entry-button">Add entry</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

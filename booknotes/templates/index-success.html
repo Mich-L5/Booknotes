@@ -1,0 +1,63 @@
+<!-- This page gets called from application.py when the user gets successfully redirected to the home page (when the user changes a book from currently reading to completed, and vice versa) -->
+<!-- The page is the same as index.html, except that it contains a success alert -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    Home Success
+{% endblock %}
+{% block body %}
+<main>
+    <!-- BOOTSTRAP success alert -->
+    <div class="alert alert-success" role="alert">
+        <!-- Get and display the success message (sent from application.py, "/complete-book" or "/revert-book" route) -->
+        {{ success_message }}
+    </div>
+    <div class="container">
+        <!-- Large circle button 1/4 (new book) -->
+        <div class="icon-container">
+            <a class="link-container" href="/new-book">
+                <div>
+                    <img src="{{url_for('static', filename='new_book.png')}}" alt="New Book icon" class="icon">
+                </div>
+            </a>
+            <div class="title-container">
+                <div class="icon-title">New Book</div>
+            </div>
+        </div>
+        <!-- Large circle button 2/4 (currently reading) -->
+        <div class="icon-container">
+            <a class="link-container" href="/currently-reading">
+                <div>
+                    <img src="{{url_for('static', filename='currently_reading.png')}}" alt="Currently Reading icon" class="icon">
+                </div>
+            </a>
+            <div class="title-container">
+                <div class="icon-title">Currently Reading</div>
+            </div>
+        </div>
+        <div class="linebreak"></div>
+        <!-- Large circle button 3/4 (completed) -->
+        <div class="icon-container">
+            <a class="link-container" href="/completed">
+                <div>
+                    <img src="{{url_for('static', filename='completed.png')}}" alt="Completed icon" class="icon">
+                </div>
+            </a>
+            <div class="title-container">
+                <div class="icon-title">Completed</div>
+            </div>
+        </div>
+        <!-- Large circle button 4/4 (want to read) -->
+        <div class="icon-container">
+            <a class="link-container" href="/want-to-read">
+                <div>
+                    <img src="{{url_for('static', filename='want_to_read.png')}}" alt="Want to Read icon" class="icon">
+                </div>
+            </a>
+            <div class="title-container">
+                <div class="icon-title">Want to Read</div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

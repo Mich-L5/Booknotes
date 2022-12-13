@@ -1,0 +1,60 @@
+<!-- This page gets called from application.py when the user successfully deletes a book that they are currently reading -->
+<!-- The page is the same as currently-reading.html, except that it contains a success alert -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    Currently Reading Success
+{% endblock %}
+{% block body %}
+<main>
+    <div class="grid-container">
+        <!-- Side menu -->
+        <div class="item1">
+            <ul>
+                <li class="sidebar-button"><a href="/add-entry">Add entry</a></li>
+                <li class="sidebar-button"><a href="/complete-book">Complete a book</a></li>
+                <li class="sidebar-button"><a href="/delete-book">Delete a book</a></li>
+            </ul>
+        </div>
+        <!-- End side menu -->
+        <div class="item2">
+            <!-- BOOTSTRAP success alert -->
+            <div class="alert alert-success" role="alert">
+                <!-- Get and display the success message (sent from application.py, "/delete-book" route) -->
+                {{ success_message }}
+            </div>
+            <div class="header-container">
+                <!-- "+" circle button (to open the sidebar on mobile) code section 1/2 -->
+                <div class="sidebar-icon-circle" id="blank-sidebar-icon-circle"></div>
+                <h1 class="main-header">Currently Reading</h1>
+                <!-- "+" circle button (to open the sidebar on mobile) code section 2/2 -->
+                <div class="sidebar-icon-circle" id="open">+</div>
+            </div>
+            <!-- Form for user to select a book they want to view that they are currently reading -->
+            <form class="book-list" method="post" action="/currently-reading">
+                <select class="option-maxwidth" required name="book">
+                    <option value="" disabled selected hidden>Select a book</option>
+                    <!-- Get and display the user's books that they are currently reading (sent from application.py, "/delete-book.html" route) -->
+                    {% for book in books %}
+                    <option value="{{ book.book_title }}">{{ book.book_title }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <button type="submit" class="in-app-button" id="view-button">View</button>
+            </form>
+        </div>
+    </div>
+    <!-- Side menu (mobile devices) -->
+    <div class="modal-container" id="modal_container">
+        <div class="modal-popup">
+            <ul>
+                <li class="sidebar-button"><a href="/add-entry">Add entry</a></li>
+                <li class="sidebar-button"><a href="/complete-book">Complete a book</a></li>
+                <li class="sidebar-button"><a href="/delete-book">Delete a book</a></li>
+            </ul>
+            <button type="button" class="close-button" id="close">Close</button>
+        </div>
+    </div>
+    <!-- End side menu (mobile devices) -->
+</main>
+{% endblock %}

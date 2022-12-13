@@ -1,0 +1,7 @@
+cs50
+flask
+werkzeug.security
+flask_session
+tempfile
+functools
+datetime

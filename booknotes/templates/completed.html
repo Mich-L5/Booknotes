@@ -1,0 +1,52 @@
+<!-- This page gets called from application.py when the user wants to see their completed books -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+    Completed Books
+{% endblock %}
+{% block body %}
+<main>
+    <div class="grid-container">
+        <!-- Side menu -->
+        <div class="item1">
+            <ul>
+                <li class="sidebar-button"><a href="/revert-book">Revert a book</a></li>
+                <li class="sidebar-button"><a href="/delete-book-completed">Delete a book</a></li>
+            </ul>
+        </div>
+        <!-- End side menu -->
+        <div class="item2">
+            <div class="header-container">
+                <!-- "+" circle button (to open the sidebar on mobile) -->
+                <div class="sidebar-icon-circle" id="blank-sidebar-icon-circle"></div>
+                <h1 class="main-header">Completed Books</h1>
+                <!-- "+" circle button cont'd (to open the sidebar on mobile) -->
+                <div class="sidebar-icon-circle" id="open">+</div>
+            </div>
+            <!-- Form for user to select the completed book they want to view -->
+            <form class="book-list" method="post" action="/completed">
+                <select required name="book" class="option-maxwidth">
+                    <option value="" disabled selected hidden>Select a book</option>
+                    <!-- Get and display the user's completed books (sent from application.py, "/completed.html" route) -->
+                    {% for book in books %}
+                    <option value="{{ book.book_title }}">{{ book.book_title }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <button type="submit" class="in-app-button" id="view-button">View</button>
+            </form>
+        </div>
+    </div>
+    <!-- Side menu (mobile devices) -->
+    <div class="modal-container" id="modal_container">
+        <div class="modal-popup">
+            <ul>
+                <li class="sidebar-button"><a href="/revert-book">Revert a book</a></li>
+                <li class="sidebar-button"><a href="/delete-book-completed">Delete a book</a></li>
+            </ul>
+            <button type="button" class="close-button" id="close">Close</button>
+        </div>
+    </div>
+    <!-- End side menu (mobile devices) -->
+</main>
+{% endblock %}

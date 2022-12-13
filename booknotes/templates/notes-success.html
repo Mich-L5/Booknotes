@@ -1,0 +1,25 @@
+<!-- This page gets called from application.py when the user successfully adds a new note entry -->
+<!-- The page is the same as notes.html, except that it contains a success alert -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+   Notes Success
+{% endblock %}
+{% block body %}
+<main>
+    <!-- BOOTSTRAP success alert -->
+    <div class="alert alert-success" role="alert">
+        <!-- Get and display the success message (sent from application.py, "/add-first-entry" or "/add-entry" route) -->
+        {{ success_message }}
+    </div>
+    <!-- Get and display the book title that the user just entered (sent from application.py, "/add-first-entry" or "/add-entry" route) -->
+    <h1 class="main-header">{{ booktitle }}</h1>
+    <div>
+         <!-- Get and display the book notes for the book that the user just entered (sent from application.py, "/add-first-entry" or "/add-entry" route) -->
+        {% for entry in notes %}
+        <h2 class="sub-header">{{ entry.date }}</h2>
+        <p class="notes">{{ entry.notes }}</p>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

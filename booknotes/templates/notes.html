@@ -1,0 +1,19 @@
+<!-- This page gets called from application.py when the user wants to add a new note entry -->
+<!-- Extend in-app-layout template with Jinja -->
+{% extends "in-app-layout.html" %}
+{% block title %}
+   Notes
+{% endblock %}
+{% block body %}
+<main>
+   <!-- Get and display the book title that the user just entered (sent from application.py, "/add-first-entry" or "/add-entry" route) -->
+   <h1 class="main-header">{{ booktitle }}</h1>
+   <div>
+      <!-- Get and display the book notes for the book that the user just entered (sent from application.py, "/add-first-entry" or "/add-entry" route) -->
+      {% for entry in notes %}
+      <h2 class="sub-header">{{ entry.date }}</h2>
+      <p class="notes">{{ entry.notes }}</p>
+      {% endfor %}
+   </div>
+</main>
+{% endblock %}
