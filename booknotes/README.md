@@ -1,20 +1,13 @@
 # BOOKNOTES
-### Video Demo:  <https://youtu.be/FRaYRQYX2VM>
-### Description:
 
-#### **Files:**
-##### **Overview:**
-
+### **Description:**
  Booknotes is a note-taking web app, specifically designed to take book reading notes.
 
-##### **Inspiration:**
+### **Technologies used:**
 
- As someone who reads a lot of self-development books, yet oftentimes forgets important information I read, I wanted a system where I could store notes on what I read. I usually store my notes all over the place, whether it be on my phone, in journals, on sticky notes, and it's justt not an efficient system. Therefore, I thought a note-taking app would be a great solution.
-
- ##### **Technologies used:**
-
- I decided to create my app using Flask.
-
+Flask, Python, SQLite, HTML, CSS, JS, Bootstrap
+ 
+### **Files:**
 ##### **application.py:**
 
 This file controls what happends inside the app, the "program" piece. Through the Flask framework, this file calls up the right HTML template files to use and when, as well as sends/pulls records to/from the database.
@@ -45,7 +38,7 @@ As I already had an idea of the design for the in-app pages, I have created thos
 
 This folder contains the CSS and JS files, as well as all the image files used throughout the HTML pages.
 
-#### **User experience:**
+### **User experience:**
 ##### **Step 1: Log in**
 
 The user starts their journey at the login/regsitration screen. As all of the other pages (the in-app pages) do require a login, users must login before navigating anywhere else.
@@ -69,13 +62,3 @@ There is also a section called "Want to Read" where the user can create a book w
 ##### **Step 6: Organize and cleanup**
 
 If at any point the user wants to delete any books for any reason, they can do so by accessing the "Delete a Book" button available under the respective categorie ("Currently Reading", "Completed", or "Want to Read").
-
-#### **Challenges:**
-##### **Duplicate book entries causing database issues:**
-
-One of the main challenges I encountered was when testing the app, I noticed that if two books in the database had the same title, it would cause issues in the database records. Whenever a book needed to be updated (whether notes added, book completed, book deleted, etc.) the SQL query would affect all records with the same book title. To prevent this from happening, I added error-checking that only allows each user to create unique book names (duplicates per user are not allowed).
-
-##### **Wrong date/time format:**
-
-Another challenge I encountered was that whenever a user would add a notes entry, the datetime function would print out the wrong time (3 hours behind I believe it was). After some research, some trial and error, and some testing, the solution I decided to implement was to put the datetime function's output through a formula that sets the time back to the correct time.
-
