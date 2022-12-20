@@ -5,7 +5,7 @@
 
 ### **Technologies used:**
 
-Flask, Python, SQLite, HTML, CSS, JS, Bootstrap
+Flask, Python, SQLite, HTML, CSS, JS, Bootstrap, Jinja
  
 ### **Files:**
 ##### **application.py:**
